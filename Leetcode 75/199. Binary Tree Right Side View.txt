@@ -1,0 +1,24 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        Dict = defaultdict(int)
+        def helper(root, count):
+            nonlocal Dict
+            if not root:
+                return
+            
+            if count not in Dict:
+                Dict[count]=root.val
+            helper(root.right,count+1)
+            helper(root.left, count+1)
+        
+        helper(root, 0)
+        print(Dict)
+        return Dict.values()
+            
+        

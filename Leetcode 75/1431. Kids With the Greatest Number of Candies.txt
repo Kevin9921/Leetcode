@@ -1,0 +1,18 @@
+class Solution(object):
+    def kidsWithCandies(self, candies, extraCandies):
+        """
+        :type candies: List[int]
+        :type extraCandies: int
+        :rtype: List[bool]
+        """
+        tempCandies = candies
+        booleanArr = []
+        flag = ""
+
+        for i in candies:
+            flag = True
+            for j in tempCandies:
+                if (i + extraCandies) < j:
+                    flag = False
+            booleanArr.append(flag)
+        return booleanArr

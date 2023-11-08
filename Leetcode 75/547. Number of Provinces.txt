@@ -1,0 +1,18 @@
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        visited = set()
+        provinces = 0
+
+        def DFS(index):
+            visited.add(index)
+            for j in range(0, len(isConnected)):
+                if isConnected[index][j] == 1:
+                    if j not in visited:
+                        DFS(j)
+
+
+        for i in range(0, len(isConnected)):
+            if i not in visited:
+                provinces = provinces + 1
+                DFS(i)
+        return provinces

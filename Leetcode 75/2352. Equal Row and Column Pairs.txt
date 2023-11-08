@@ -1,0 +1,18 @@
+class Solution:
+    def equalPairs(self, grid: List[List[int]]) -> int:
+    
+        counter = collections.Counter()
+
+        for i in grid:
+            counter[tuple(i)] = counter[tuple(i)] + 1
+
+        count = 0
+        N = len(grid)
+        for i in range(N):
+            temp = []
+            for j in range(N):
+                temp.append(grid[j][i])
+            
+            count = counter[tuple(temp)] + count
+        return count
+        

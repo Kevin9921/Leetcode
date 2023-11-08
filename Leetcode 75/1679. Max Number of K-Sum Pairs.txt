@@ -1,0 +1,21 @@
+class Solution(object):
+    def maxOperations(self, nums, k):
+        nums.sort()
+
+        point_l = 0
+        point_r = len(nums) - 1
+        pairs = 0
+
+        while(point_l<point_r):
+            if nums[point_l] + nums[point_r] == k:
+                pairs += 1
+                point_l += 1
+                point_r -= 1
+            elif k - nums[point_r] > nums[point_l]:
+                point_l += 1
+            elif k - nums[point_l] < nums[point_r]:
+                point_r -= 1
+        
+        return pairs
+
+        

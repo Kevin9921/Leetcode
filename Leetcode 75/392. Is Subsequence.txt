@@ -1,0 +1,14 @@
+class Solution(object):
+    def isSubsequence(self, s, t):
+
+        count = 0
+        point = 0
+
+        for i in t:
+            if point < len(s):
+                if i==s[point]:
+                    count = count + 1
+                    point = point + 1
+            
+        return count == len(s)
+        

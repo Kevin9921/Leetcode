@@ -1,0 +1,30 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        stack = []
+        
+        for i in s:
+            if not stack or not i == "]":
+                stack.append(i)
+            temp = ""
+            if i =="]":
+                while(True):
+                    peek = stack[-1]
+                    if not peek == "[":
+                        temp = temp + (stack.pop())
+                    else:
+                        stack.pop()
+                        value = ""
+                      
+                        while (True):
+                            value = stack.pop() + value
+                            if not stack:
+                                break
+                            if not stack[-1].isdigit():
+                                break
+                        stack.append(temp * int(value))
+                        break
+
+        RString = ""
+        for i in stack:
+            RString = RString+ i[::-1]
+        return RString

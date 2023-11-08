@@ -1,0 +1,18 @@
+class Solution:
+    def closeStrings(self, word1: str, word2: str) -> bool:
+        if len(word1) != len(word2):
+            return False
+
+        list1 = collections.Counter(word1)
+        list2 = collections.Counter(word2)
+        
+        temp1 = list(list1.values()) 
+        temp2 = list(list2.values())
+
+        temp1.sort() 
+        temp2.sort() 
+
+        if set(word1) == set(word2):
+            if temp1 == temp2:
+                return True
+        return False 

@@ -1,0 +1,13 @@
+class Solution(object):
+    def findMaxAverage(self, nums, k):
+        subArray = sum(nums[:k])
+        maxSum = subArray
+
+        for i in range(1, len(nums) - k+ 1):
+            subArray = subArray + nums[i + k-1]
+            subArray = subArray - nums[i - 1]
+            if maxSum < subArray:
+                maxSum = subArray
+        return float(maxSum) / k
+
+        

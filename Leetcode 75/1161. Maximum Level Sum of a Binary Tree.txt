@@ -1,0 +1,23 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+        Dict = defaultdict(int)
+        def helper(root, count):
+            if not root:
+                return
+            if count in Dict:
+                Dict[count] =  Dict[count] + root.val
+            else: 
+                Dict[count] = root.val
+            helper(root.left, count+ 1)
+            helper(root.right, count+ 1)
+        helper(root, 1)
+
+        max_val = max(Dict, key=Dict.get)
+        return max_val
+
